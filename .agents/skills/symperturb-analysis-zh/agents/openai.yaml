@@ -1,0 +1,4 @@
+interface:
+  display_name: "SymPerturb 中文分析"
+  short_description: "执行、审计和解释症状网络虚拟扰动分析"
+  default_prompt: "使用 $symperturb-analysis-zh 对当前症状网络数据执行或审计 SymPerturb 分析，并严格区分模型化靶点假设与因果治疗效应。"

@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use SymPerturb, please cite the manuscript and the software release."
+title: "SymPerturb: symptom-network virtual perturbation reference implementation and Agent Skill"
+type: software
+authors:
+  - family-names: "Zhu"
+    given-names: "Zheng"
+  - family-names: "Yu"
+    given-names: "Junwen"
+  - family-names: "Hu"
+    given-names: "Tiantian"
+  - family-names: "Yang"
+    given-names: "Zhongfang"
+  - family-names: "Wang"
+    given-names: "Jiaqing"
+version: "0.1.0"
+date-released: "2026-08-31"
+repository-code: "REPLACE_WITH_GITHUB_REPOSITORY_URL"
+abstract: "Reference implementation and reusable Agent Skill for the SymPerturb virtual-perturbation framework described in the manuscript 'SymPerturb converts symptom-network structure into testable intervention priorities'."

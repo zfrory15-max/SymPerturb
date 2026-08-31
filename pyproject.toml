@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "symperturb"
+version = "0.1.0"
+description = "Reference implementation of SymPerturb virtual perturbation for cross-sectional symptom networks"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  {name = "Zheng Zhu"},
+  {name = "Junwen Yu"},
+  {name = "Tiantian Hu"},
+  {name = "Zhongfang Yang"},
+  {name = "Jiaqing Wang"}
+]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scipy>=1.10",
+  "PyYAML>=6.0",
+  "matplotlib>=3.7",
+  "tabulate>=0.9"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+symperturb = "symperturb.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

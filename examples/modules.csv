@@ -1,0 +1,13 @@
+symptom,module
+Pain,Somatic
+Dyspnea,Somatic
+Nausea,Somatic
+Sadness,Affective
+Anxiety,Affective
+Worry,Affective
+Fatigue,Sleep-fatigue
+Insomnia,Sleep-fatigue
+Low_energy,Sleep-fatigue
+Concentration,Cognitive-behavioural
+Rumination,Cognitive-behavioural
+Functional_limitation,Cognitive-behavioural

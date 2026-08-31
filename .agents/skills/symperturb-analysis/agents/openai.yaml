@@ -1,0 +1,4 @@
+interface:
+  display_name: "SymPerturb Analysis"
+  short_description: "Run and audit symptom-network virtual perturbation"
+  default_prompt: "Use $symperturb-analysis to run an auditable SymPerturb analysis and report target priorities with uncertainty and causal-interpretation guardrails."

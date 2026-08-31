@@ -1,0 +1,4 @@
+LICENSE NOT YET SELECTED
+
+Copyright (c) 2026 SymPerturb authors.
+Replace this file with the authors' chosen license before public distribution.
