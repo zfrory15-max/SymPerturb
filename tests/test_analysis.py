@@ -24,3 +24,38 @@ def test_full_target_table_has_seven_utilities_and_separate_robustness():
         assert col in result.target_scores.columns
     assert "robustness" not in UTILITY_COLUMNS
     assert result.target_scores["vpps"].between(0, 100).all()
+
+
+def test_vpps_uses_exactly_seven_equal_weight_utilities():
+    expected = [
+        "efficacy", "dose_efficiency", "breadth", "cross_module",
+        "communication_block", "combination_value", "responsiveness",
+    ]
+    assert UTILITY_COLUMNS == expected
+    data, modules = make_data()
+    result = SymPerturbAnalyzer(
+        data, modules,
+        config={"run_robustness_scenarios": False, "bootstrap_replicates": 0},
+    ).run()
+    normalized = result.target_scores[[f"{name}_norm" for name in expected]]
+    np.testing.assert_allclose(
+        result.target_scores["vpps"].to_numpy(), normalized.mean(axis=1).to_numpy()
+    )
+    assert result.metadata["vpps_dimensions"] == expected
+    assert result.metadata["robustness_in_vpps"] is False
+
+
+def test_robustness_scenarios_do_not_change_baseline_target_scores():
+    data, modules = make_data()
+    cfg = {"bootstrap_replicates": 0, "combination_partner_k": 2}
+    without = SymPerturbAnalyzer(
+        data, modules, config={**cfg, "run_robustness_scenarios": False}
+    ).run()
+    with_scenarios = SymPerturbAnalyzer(
+        data, modules, config={**cfg, "run_robustness_scenarios": True}
+    ).run()
+    pd.testing.assert_frame_equal(without.target_scores, with_scenarios.target_scores)
+    assert without.robustness.empty
+    assert len(with_scenarios.robustness) == len(data.columns)
+    assert "robustness_diagnostic" in with_scenarios.robustness.columns
+    assert "robustness_diagnostic" not in with_scenarios.target_scores.columns

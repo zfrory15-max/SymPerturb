@@ -14,7 +14,9 @@ This repository is designed for two uses:
 1. **Agent Skill** — `.agents/skills/symperturb-analysis/` is a portable `SKILL.md` bundle following the Agent Skills structure used by OpenAI/Codex.
 2. **Reference analysis package** — `src/symperturb/` provides a Python implementation of the revised seven-utility SymPerturb specification described in the manuscript.
 
-The current manuscript explicitly notes that its reported finite-sample composite results were generated with an older eight-component exploratory score and require regeneration under the revised seven-utility rule. This repository therefore treats the **seven utility dimensions + separate robustness diagnostic** as the governing specification.
+The current manuscript, **SymPerturb: a virtual-perturbation framework for ranking intervention targets in symptom networks**, uses **seven utility dimensions + a separate robustness diagnostic**. It identifies package version `0.1.0` at commit [`76dd417`](https://github.com/zfrory15-max/SymPerturb/commit/76dd4178b285b80beb69f14a642e84ed1cabc7a0). The earlier eight-component/regeneration notice described a superseded draft, not the current manuscript.
+
+**Reproducibility status:** this repository contains the reference package and smoke-test inputs. The manuscript-specific simulation driver, full generating parameters, and result-to-table/figure mapping have not been located in this repository. A package-version match and passing tests are **not** verification of the paper's numerical results. See [the reproducibility status and completion checklist](docs/REPRODUCIBILITY.md).
 
 ## Implemented methodology
 
@@ -60,7 +62,7 @@ symperturb \
   --out example-output
 ```
 
-The included dataset is a **repository smoke-test dataset**, not the manuscript simulation dataset and not patient data. A small set of generated demonstration outputs is committed under `examples/example-output/` so GitHub readers can inspect the expected file structure without running the package.
+The included dataset is a **repository smoke-test dataset**, not the manuscript simulation dataset and not patient data. The command above generates demonstration outputs in `example-output/`; these outputs are not committed. The 25 bootstrap replicates in `examples/config.yaml` are a smoke-test setting, not a publication-level uncertainty analysis.
 
 ## Run on your own data
 
@@ -87,7 +89,9 @@ An exact vKO with zero residual target variance creates a constant target. Do **
 
 ## Reproducibility status
 
-This is a **reference implementation generated from the method specification in the supplied manuscript draft**. It should be independently code-reviewed and numerically reconciled with the authors' research code before being presented as the validated publication implementation. The manuscript itself calls for independent implementation review, regeneration of the revised seven-utility results, and complete-pipeline uncertainty analysis.
+The package implements the seven-utility rule and keeps robustness outside VPPS. It remains a **reference implementation**, not a complete manuscript-reproduction archive. The current manuscript reports a 22-node, four-module verification study with continuous and ordinal measurements; those reported results have not been independently reproduced from the files in this repository.
+
+The next required artifact is the authors' exact simulation driver and its parameters, seeds, environment, and outputs—not a newly invented replacement analysis. See [source/version provenance](docs/SOURCE_AND_VERSION.md), [reproducibility requirements](docs/REPRODUCIBILITY.md), and the [release checklist](docs/GITHUB_RELEASE_CHECKLIST.md).
 
 ## Citation
 
@@ -95,4 +99,5 @@ See `CITATION.cff`. Until a DOI/version of the manuscript is available, cite the
 
 ## License
 
-No redistribution license has been selected in this generated bundle. Before making the repository public, replace `LICENSE` with the license chosen by the authors for code and method content.
+This repository is public, but its existing `LICENSE` does **not** grant a redistribution, modification, or commercial-use license. Public visibility is not an open-source license. Any license change requires the copyright holders' choice; this documentation update does not change the license.
+

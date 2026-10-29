@@ -15,5 +15,6 @@ authors:
     given-names: "Jiaqing"
 version: "0.1.0"
 date-released: "2026-08-31"
-repository-code: "REPLACE_WITH_GITHUB_REPOSITORY_URL"
-abstract: "Reference implementation and reusable Agent Skill for the SymPerturb virtual-perturbation framework described in the manuscript 'SymPerturb converts symptom-network structure into testable intervention priorities'."
+repository-code: "https://github.com/zfrory15-max/SymPerturb"
+abstract: "Reference implementation and reusable Agent Skill for the SymPerturb virtual-perturbation framework described in the manuscript 'SymPerturb: a virtual-perturbation framework for ranking intervention targets in symptom networks'."
+

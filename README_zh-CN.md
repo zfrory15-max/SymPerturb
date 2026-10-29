@@ -15,7 +15,9 @@
 1. **Agent Skill**：`.agents/skills/symperturb-analysis/` 为英文版 Skill；`.agents/skills/symperturb-analysis-zh/` 为中文版 Skill，可用于辅助设计、执行、审计和解释 SymPerturb 分析。
 2. **参考分析程序**：`src/symperturb/` 提供与论文修订版方法学一致的 Python 参考实现。
 
-论文当前版本明确指出，稿件中部分有限样本综合结果仍来自早期八维探索性评分，因此需要按照修订后的**七个效用维度 + 独立 robustness 诊断**重新计算。本仓库以修订后的七维定义作为当前规范。
+当前稿件题目为 **SymPerturb: a virtual-perturbation framework for ranking intervention targets in symptom networks**，采用**七个效用维度 + 独立 robustness 诊断**，并注明使用 `0.1.0` 版程序及提交 [`76dd417`](https://github.com/zfrory15-max/SymPerturb/commit/76dd4178b285b80beb69f14a642e84ed1cabc7a0)。此前“八维结果需要重新计算”的说明对应已被替代的旧稿，不能继续用于描述当前稿件。
+
+**复现状态：** 仓库包含参考程序及 smoke-test 输入，但尚未在仓库中找到本稿专用的模拟驱动脚本、完整生成参数及结果与图表的对应关系。程序版本对应、测试通过，均**不等于论文数值结果已完成复现**。详见 [复现状态与待补材料](docs/REPRODUCIBILITY.md)。
 
 ## 已实现的方法
 
@@ -73,7 +75,7 @@ symperturb \
   --out example-output
 ```
 
-仓库中的示例数据仅用于**代码 smoke test 和输出格式演示**，不是论文正式 simulation 数据，也不是患者数据。
+仓库中的示例数据仅用于**代码 smoke test 和输出格式演示**，不是论文正式 simulation 数据，也不是患者数据。以上命令会在 `example-output/` 生成输出，输出文件未提交到仓库。`examples/config.yaml` 中的 25 次 bootstrap 仅供 smoke test，不代表正式研究的不确定性分析。
 
 ## 使用自己的数据
 
@@ -136,13 +138,9 @@ VPPS 是当前预设候选靶点集合内的**相对排序分数**。由于每�
 
 ## 可重复性状态
 
-这是根据当前论文方法学规范整理出的**参考实现**。在作为正式发表版本的软件之前，仍建议：
+当前程序已实现七维 VPPS，并将 robustness 排除在综合分数之外。它仍是**参考实现**，不是完整的论文复现归档。当前稿件报告了 22 节点、四模块、连续与有序测量条件下的验证研究；本仓库现有文件尚不足以独立复现这些数值结果。
 
-1. 与作者原始研究代码逐项核对；
-2. 按七维 VPPS 定义重新生成稿件中的相关数值结果；
-3. 进行独立代码审查；
-4. 完成完整流程 bootstrap 与模型错设 stress test；
-5. 固定正式版本号并归档。
+下一步需要补入作者实际使用的模拟驱动脚本，以及参数、随机种子、环境和输出清单，而不是重新编造一套“正式结果”。参见 [来源与版本](docs/SOURCE_AND_VERSION.md)、[复现要求](docs/REPRODUCIBILITY.md) 和 [发布检查表](docs/GITHUB_RELEASE_CHECKLIST.md)。
 
 ## 引用
 
@@ -150,4 +148,5 @@ VPPS 是当前预设候选靶点集合内的**相对排序分数**。由于每�
 
 ## License
 
-当前生成包尚未替作者选择最终开源许可证。公开发布前请根据作者决定更新根目录 `LICENSE`。
+仓库现已公开，但现有 `LICENSE` **未授予再分发、修改或商业使用许可**。公开可见不等于开源授权。许可证须由著作权人决定，本次文档更新不改变许可证。
+

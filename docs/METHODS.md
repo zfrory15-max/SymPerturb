@@ -10,7 +10,9 @@ SymPerturb has three layers:
 - **Topology layer:** edge-level and node-centred communication blocking.
 - **Multi-target layer:** combination perturbation and sequence optimisation.
 
-These are not all the same mathematical object. vKO/vKD and communication blocks are primitive operators; vDP is an evaluation procedure; combination is a joint-target construction; sequence optimisation is a decision procedure.
+These are not all the same mathematical object. There are **four primitive operators** (vKO, vKD, edge-level blocking, and node-centred blocking) and **three analytic procedures** (vDP intensity-response evaluation, combination joint-target construction, and sequence optimisation). The architecture above groups them by role; it does not make vDP a primitive operator.
+
+This method summary describes the reference package, not evidence that the manuscript simulation has been reproduced. See [reproducibility status](REPRODUCIBILITY.md).
 
 ## Primary estimand
 
@@ -23,3 +25,4 @@ Seven utilities are direction-aligned and min-max normalized across the prespeci
 ## Interpretation
 
 The framework answers: *What changes in the fitted statistical system under this explicit virtual perturbation operator?* It does not, by itself, answer: *What would happen under a real-world treatment?*
+
